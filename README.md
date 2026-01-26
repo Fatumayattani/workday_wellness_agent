@@ -68,6 +68,48 @@ The model returns a structured JSON response to drive the UI state:
   "reasoning": "You've been in meetings for 120 minutes straight. A quick reset will help your focus for the next block."
 }
 ```
+Here is your text converted into **clean Markdown** format:
+
+---
+
+## 📈 Opik Integration (Evaluation & Observability)
+
+This project uses **Opik** to track agent performance, monitor behavior, and continuously improve decision quality. Opik captures both the inputs (calendar signals and stress levels) and outputs (agent decisions) for each run, enabling systematic evaluation and comparison across prompt versions.
+
+### What Opik Tracks
+
+Each agent run logs:
+
+* Meeting density
+* Longest continuous meeting block
+* Time since last break
+* Remaining meetings
+* Stress level
+* Time of day
+* Agent decision output (intervene, break type, duration, reasoning)
+* Prompt version and model configuration
+
+### Evaluation Metrics
+
+Opik evaluates the agent using custom metrics such as:
+
+* **Intervention appropriateness**
+  (Was the decision aligned with high workload and high stress?)
+* **Break duration alignment**
+  (Was the break duration reasonable given the meeting density?)
+* **False positive rate**
+  (How often does the agent interrupt during low workload?)
+* **Reasoning quality**
+  (Does the reasoning mention calendar signals and stress level clearly?)
+
+### How Opik Improves the Agent
+
+Opik allows the team to:
+
+* Compare prompt versions and identify the best-performing one
+* Detect regression when a new prompt makes the agent too aggressive or too passive
+* Tune the agent to minimize unnecessary interruptions while maximizing wellness impact
+
 
 ## 🎨 Branding & Aesthetics
 
