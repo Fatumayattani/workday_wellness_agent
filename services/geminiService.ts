@@ -1,9 +1,10 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { WorkloadData, WellnessRecommendation } from "../types";
 
+// Import Opik logger
+import { logToOpik } from "./opik/opikLogger";
+
 export const getWellnessRecommendation = async (data: WorkloadData): Promise<WellnessRecommendation> => {
-  // Use named parameter and direct environment variable access as per @google/genai guidelines
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   const prompt = `
@@ -41,11 +42,15 @@ export const getWellnessRecommendation = async (data: WorkloadData): Promise<Wel
       }
     });
 
-    // Access text property directly from response as per guidelines
-    const result = JSON.parse(response.text?.trim() || '{}');
-    return result as WellnessRecommendation;
+    const result = JSON.parse(response.text?.trim() || '{}') as WellnessRecommendation;
+
+    // Log to Opik
+    await logToOpik(data, result, "v1");
+
+    return result;
   } catch (error) {
     console.error("Gemini API Error:", error);
     throw new Error("Failed to get wellness recommendation. Please try again.");
   }
 };
+
