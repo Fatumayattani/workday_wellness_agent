@@ -25,7 +25,7 @@ Bloom follows a strict set of heuristics to ensure interventions are helpful, no
 
 ```mermaid
 graph TD
-    A[User Input: Workload + Stress] --> B{Bloom Agent Analysis}
+    A[User Input: Workload+Stress] --> B{Bloom Agent Analysis}
     B --> C[Gemini AI Contextualization]
     C --> D{Intervene?}
     D -- No --> E[Steady As You Go: Positive Reinforcement]
