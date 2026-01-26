@@ -1,0 +1,5 @@
+{
+  "name": "Workday Wellness Agent",
+  "description": "An AI-powered wellness assistant that analyzes your meeting schedule and stress levels to suggest timely, short wellness breaks to prevent burnout.",
+  "requestFramePermissions": []
+}
