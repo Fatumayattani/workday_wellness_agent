@@ -9,8 +9,8 @@ export async function logToOpik(
 
   const trace = opikClient.trace({
     name: "Workday Wellness Agent Run",
-    input,
-    output,
+    input: JSON.parse(JSON.stringify(input)),
+    output: JSON.parse(JSON.stringify(output)),
     metadata: {
       promptVersion,
       model: "gemini-3-flash-preview",
