@@ -1,15 +1,21 @@
 import { Opik } from "opik";
 
-let _opikClient: Opik | null = null;
+let client: Opik | null = null;
 
-export function getOpikClient() {
-  if (_opikClient) return _opikClient;
+export function getOpikClient(): Opik | null {
+  if (client) return client;
 
-  _opikClient = new Opik({
-    // do NOT pass optionMatchers at all
-    // only pass the bare minimum Opik needs to run
-    loggers: [],
+  const apiKey = process.env.OPIK_API_KEY;
+  if (!apiKey) {
+    console.warn("OPIK_API_KEY missing, Opik disabled");
+    return null;
+  }
+
+  client = new Opik({
+    apiKey,
+    projectName: "workday-wellness-agent",
+    workspaceName: "default",
   });
 
-  return _opikClient;
+  return client;
 }
