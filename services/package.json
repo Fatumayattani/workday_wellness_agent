@@ -1,0 +1,10 @@
+{
+  "name": "workday-wellness-services",
+  "type": "module",
+  "dependencies": {
+    "opik": "^1.9.99",
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5"
+  }
+}
