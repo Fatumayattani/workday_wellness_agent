@@ -1,17 +1,16 @@
-import { opikClient } from "./opikClient";
+import { getOpikClient } from "./opikClient";
 
-/**
- * Send a trace to Opik.
- */
 export async function logToOpik(
   input: unknown,
   output: unknown,
   promptVersion: string,
 ) {
+  const opikClient = getOpikClient();
+
   const trace = opikClient.trace({
     name: "Workday Wellness Agent Run",
-    input: input as Record<string, unknown>,
-    output: output as Record<string, unknown>,
+    input,
+    output,
     metadata: {
       promptVersion,
       model: "gemini-3-flash-preview",
